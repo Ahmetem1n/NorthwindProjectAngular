@@ -27,6 +27,6 @@ export class ProductService {
 
   add(product: Product): Observable<ResponseModel> {
     let newPath = this.apiUrl + 'products/add';
-    return this.httpClient.post<ResponseModel>(newPath, product);
+    return this.httpClient.post<ResponseModel>(newPath, product,);
   }
 }
