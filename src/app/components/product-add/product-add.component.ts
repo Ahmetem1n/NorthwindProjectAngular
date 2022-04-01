@@ -42,8 +42,10 @@ export class ProductAddComponent implements OnInit {
           this.toastrService.success(response.message, 'Success');
         },
         (responseError) => {
-          console.log(responseError)
-          if (responseError.error.ValidationErrors.length > 0) {
+          if (
+            responseError.error.ValidationErrors &&
+            responseError.error.ValidationErrors.length > 0
+          ) {
             for (
               let i = 0;
               i < responseError.error.ValidationErrors.length;
@@ -54,6 +56,8 @@ export class ProductAddComponent implements OnInit {
                 'Validation Error'
               );
             }
+          } else {
+            this.toastrService.error(responseError.error.message, 'Error');
           }
         }
       );
